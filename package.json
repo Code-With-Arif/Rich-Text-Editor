@@ -1,6 +1,8 @@
 {
   "name": "rich_text_editor",
   "version": "1.0.0",
+  "description": "A react component to create Rich Text Editor along with its renderer.",
+  "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -42,5 +44,21 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "build-lib": "rollup -c"
+  },
+  "author": {
+    "name": "Arif Sardar",
+    "email": "arifsardar.private@gmail.com",
+    "url": "https://www.codewitharif.ml"
+  },
+  "homepage": "https://github.com/arif-2005/Rich-Text-Editor",
+  "keywords": [
+    "Rich Text Editor",
+    "react",
+    "CK Editor",
+    "Content Editor"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arif-2005/Rich-Text-Editor"
   }
 }
