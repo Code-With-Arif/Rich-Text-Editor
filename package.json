@@ -42,7 +42,8 @@
   },
   "dependencies": {
     "dompurify": "^2.4.0",
-    "prismjs": "^1.29.0"
+    "prismjs": "^1.29.0",
+    "requirejs": "^2.3.6"
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",

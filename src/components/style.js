@@ -161,7 +161,7 @@ export const lightStyle = `
 
 export const editorDefaultStyles = `
 ::selection {
-    background: #1db79f !important;
+    background: #00ffd78f !important;
 }
 .editor {
     background-color: var(--ck-custom-background);
@@ -200,8 +200,8 @@ figcaption {
     display: flow-root;
     border-radius: 8px;
     position: relative;
-    background-color: var(--ck-custom-foreground);
-    color: var(--ck-custom-white);
+    background-color: hsl(255, 3%, 18%);
+    color: hsl(0, 0%, 100%);
 }
 .editor span[lang] pre {
     width: auto;

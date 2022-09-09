@@ -63,7 +63,7 @@ export function Editor(props) {
     }
 
     React.useEffect(() => {
-        const CKEditor = require('./build/ckeditor');
+        const CKEditor = require('./ckeditor');
         const editorElem = editorRef.current;
 
         const editorConfig = EditorConfig(props);

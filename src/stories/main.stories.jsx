@@ -43,7 +43,7 @@ story.add('Read Only', () => {
                 }}
             /> */}
             <Render
-                darkMode
+                // darkMode
                 data={data}
             />
         </>
