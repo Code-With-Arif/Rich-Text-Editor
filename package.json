@@ -1,5 +1,5 @@
 {
-  "name": "rich_text_editor",
+  "name": "react-document-editor",
   "version": "1.0.0",
   "description": "A react component to create Rich Text Editor along with its renderer.",
   "main": "dist/index.js",
@@ -9,6 +9,9 @@
     "dist"
   ],
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@babel/core": "^7.19.0",
     "@babel/preset-react": "^7.18.6",
