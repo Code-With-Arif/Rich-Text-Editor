@@ -7,7 +7,7 @@ import "./prism.css";
 import "./style.css";
 
 
-export default function Editor(props) {
+export function Editor(props) {
     /*
     props: {
         darkMode,

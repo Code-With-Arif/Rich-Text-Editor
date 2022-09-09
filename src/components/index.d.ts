@@ -34,7 +34,7 @@ interface Props {
     onFileUpload: Function;
 }
 
-declare function Editor(props: Props): JSX.Element;
+export declare function Editor(props: Props): JSX.Element;
 
 export declare function Render(props: {
     darkMode: Boolean;
@@ -52,5 +52,3 @@ export declare function Render(props: {
     data: String;
     customLoader: JSX.Element;
 }): JSX.Element;
-
-export default Editor;
