@@ -1,6 +1,6 @@
 {
   "name": "react-document-editor",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A react component to create Rich Text Editor along with its renderer.",
   "main": "dist/index.js",
   "module": "dist/index.js",
