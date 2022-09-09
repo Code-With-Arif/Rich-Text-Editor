@@ -32,25 +32,25 @@ interface Props {
     onAutoSave: Function;
     onWordCountUpdate: Function;
     onFileUpload: Function;
-
-    Render: function ({
-        darkMode: Boolean;
-        styles: React.CSSProperties;
-        editorStyles: React.CSSProperties;
-        customRenderStyle: {
-            darkStyle: String;
-            lightStyle: String;
-        };
-        borderColor: String;
-        contentSize: {
-            height: String;
-            width: String;
-        };
-        data: String;
-        customLoader: JSX.Element;
-    }): JSX.Element;
 }
 
 declare function Editor(props: Props): JSX.Element;
 
-export = Editor;
+export declare function Render(props: {
+    darkMode: Boolean;
+    styles: React.CSSProperties;
+    editorStyles: React.CSSProperties;
+    customRenderStyle: {
+        darkStyle: String;
+        lightStyle: String;
+    };
+    borderColor: String;
+    contentSize: {
+        height: String;
+        width: String;
+    };
+    data: String;
+    customLoader: JSX.Element;
+}): JSX.Element;
+
+export default Editor;

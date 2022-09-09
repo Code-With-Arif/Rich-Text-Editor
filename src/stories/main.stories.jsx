@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 
 import Editor from "../components";
-import BuiltEditor from "../../dist/index";
+import BuiltEditor, { Render as BuiltRender } from "../../";
 import './globalstyle.css'
 import { Render } from "../components";
 
@@ -43,7 +43,7 @@ story.add('Read Only', () => {
                     setData(editor.getData());
                 }}
             /> */}
-            <Editor.Render
+            <Render
                 darkMode
                 data={data}
             />
@@ -60,7 +60,7 @@ story.add('built', () => {
                 uploadAuthorization="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2IiwiYXV0aCI6eyJjb2xsYWJvcmF0aW9uIjp7IioiOnsicm9sZSI6IndyaXRlciJ9fSwiY2tib3giOnsicm9sZSI6ImFkbWluIn19LCJ1c2VyIjp7ImlkIjoiNiIsIm5hbWUiOiJGYWlybGllIFNlcnJpZXIiLCJlbWFpbCI6Imh1ZmVmYW5pQHdhZC5scyJ9LCJpc0RldlRva2VuIjp0cnVlLCJ0aW1lc3RhbXAiOjE2NjI2MDY5ODA3OTIsInNpZ25hdHVyZSI6ImQwNDQxODU3MDg4OGQ0YjAzYWFlZjVkY2M4OTFmNDAwYWU0MGViMzdlOWY0ZjgzZjQxMGUwNTIzZTI5M2NmODMiLCJleHAiOjE2NjI2MTA1ODAsImF1ZCI6InJjMURGdUZwSHFjUjNNYWg2eTBlIiwianRpIjoiZFRpNDNCdW9VMEpZQ1NBVllfb2k4MEtrZ3UyMzRMd3QiLCJpYXQiOjE2NjI2MDY5ODB9.q3g_grSEWgGyWGn4dElD_-ph9pgCCxchucem-vWjJPw"
             /> */}
 
-            <BuiltEditor.Render
+            <BuiltRender
                 darkMode
                 data={`<h1>HELLO WORLD</h1><span lang="javascript" dir="undefined"><pre><code class="language-javascript">console.log("Hello World");
 

@@ -6,11 +6,7 @@ import { highlightAllUnder } from "prismjs";
 import "./prism.css";
 import "./style.css";
 
-/**
- * 
- * @param {object} props 
- * @returns 
- */
+
 export default function Editor(props) {
     /*
     props: {
@@ -250,7 +246,7 @@ export default function Editor(props) {
 }
 
 
-Editor.Render = (props) => {
+export const Render = (props) => {
 
     /*
     props: {
