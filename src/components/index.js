@@ -2,10 +2,32 @@ import React from 'react'
 import EditorConfig from "./editor-toolbar.config";
 import MyUploadAdapter from './uploadAdapter';
 import { darkStyle, lightStyle, editorDefaultStyles } from './style';
-import { highlightAllUnder } from "prismjs";
+import Prism from "prismjs";
+import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+import "prismjs/plugins/toolbar/prism-toolbar.min.css";
+import "prismjs/plugins/toolbar/prism-toolbar.min";
+import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min";
 import "./prism.css";
 import "./style.css";
+import "prismjs/components/prism-markup-templating";
 
+import prismComponents from "prismjs/components";
+
+const languages = [ "plane", ...Object.keys(prismComponents.languages).filter(e => ![
+    "meta",
+    "django"
+].includes(e)).sort()];
+
+Object.keys(prismComponents.languages).forEach(e => {
+    try {
+        if([
+            "meta",
+            "django"
+        ].includes(e)) return;
+        require("prismjs/components/prism-"+e);
+    } catch (err) {console.log(err);}
+});
 
 export function Editor(props) {
     /*
@@ -66,7 +88,7 @@ export function Editor(props) {
         const CKEditor = require('./ckeditor');
         const editorElem = editorRef.current;
 
-        const editorConfig = EditorConfig(props);
+        const editorConfig = EditorConfig({ ...props, languages: (props.codeLanguages || languages)});
 
         if (editorElem && editorElem.nodeType && !editor) {
             editorElem.innerHTML = "";
@@ -110,6 +132,7 @@ export function Editor(props) {
                 console.error(error);
             });
         }
+        // eslint-disable-next-line
     }, [
         editorRef,
         toolBarRef,
@@ -125,6 +148,7 @@ export function Editor(props) {
             document.head.appendChild(StyleRef.current);
             setCssLoaded(true);
         }
+        // eslint-disable-next-line
     }, [
         props.darkMode,
         props.customRenderStyle,
@@ -135,6 +159,7 @@ export function Editor(props) {
     React.useEffect(() => {
         if (editor !== null && loaded)
             editor.setData(props.data || "");
+        // eslint-disable-next-line
     }, [props.data]);
 
     React.useEffect(() => {
@@ -143,6 +168,7 @@ export function Editor(props) {
                 editor.setData(data);
             }
         }
+        // eslint-disable-next-line
     }, [props.setData?.current]);
 
     React.useEffect(() => {
@@ -155,17 +181,16 @@ export function Editor(props) {
     ])
 
     return (
-        <div className='customEditor' style={{
+        <div className={'customEditor' + ' ' + props.className || ""} style={{
             width: '100%',
             height: '100%',
             minHeight: '355px',
             position: 'relative',
             overflow: 'hidden',
-            borderRadius: '8px',
             ...props.styles
         }}>
 
-            <style ref={StyleRef}></style>
+            <style data-editor ref={StyleRef}></style>
 
             {(!editor && !cssLoaded) &&
                 <div style={{
@@ -211,9 +236,8 @@ export function Editor(props) {
                 position: 'relative',
                 width: '100%',
                 height: !editor ? '100%' : 'calc(100% - 44px )',
-                overflow: 'hidden',
-                paddingRight: props.contentSize ? '10px' : '0px',
-                paddingLeft: props.contentSize ? '10px' : '0px',
+                overflow: 'auto',
+                padding: props.contentSize ? "0 10px" : "0 1px",
                 visibility: (editor || cssLoaded) ? 'visible' : 'hidden',
                 borderRadius: '4px',
                 marginTop: '3px',
@@ -222,8 +246,6 @@ export function Editor(props) {
                     position: 'relative',
                     width: props.contentSize?.width ?? '100%',
                     margin: '0 auto',
-                    height: '100%',
-                    overflow: 'auto',
                     minHeight: props.contentSize?.height ?? '100%',
                     borderColor: props.borderColor || '#707070',
                     border: props.contentSize ? '1px solid !important' : 'none',
@@ -245,11 +267,11 @@ export function Editor(props) {
     )
 }
 
-
 export const Render = (props) => {
 
     /*
     props: {
+        className,
         darkMode,
         styles,
         editorStyles,
@@ -289,17 +311,17 @@ export const Render = (props) => {
     ]);
 
     React.useEffect(() => {
-        highlightAllUnder(editorRef.current);
+        window.Prism = Prism;
+        Prism.highlightAllUnder(editorRef.current);
     });
 
     return (
-        <div className='customEditor' style={{
+        <div className={'customEditor' + ' ' + props.className || ""} style={{
             width: '100%',
             height: '100%',
             minHeight: '355px',
             position: 'relative',
             overflow: 'hidden',
-            borderRadius: '8px',
             ...props.styles
         }}>
 
@@ -338,8 +360,6 @@ export const Render = (props) => {
                 paddingRight: props.contentSize ? '10px' : '0px',
                 paddingLeft: props.contentSize ? '10px' : '0px',
                 visibility: (cssLoaded) ? 'visible' : 'hidden',
-                borderRadius: '4px',
-                marginTop: '3px',
             }}>
                 <div ref={editorRef} style={{
                     position: 'relative',
@@ -353,7 +373,10 @@ export const Render = (props) => {
                     ...props.editorStyles,
                 }}
                     dangerouslySetInnerHTML={{ __html: props.data || "" }}
-                    className="editor ck-restricted-editing_mode_standard ck-blurred ck-content ck ck-editor__editable ck-rounded-corners ck-editor__editable_inline"
+                    className="editor line-numbers ck-restricted-editing_mode_standard ck-blurred ck-content ck ck-editor__editable ck-rounded-corners ck-editor__editable_inline"
+                    data-prismjs-copy="COPY"
+                    data-prismjs-copy-error="Failed! Try Ctrl+c"
+                    data-prismjs-copy-success="COPIED!"
                 >
                 </div>
             </div>

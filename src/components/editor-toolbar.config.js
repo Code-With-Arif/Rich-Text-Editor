@@ -47,8 +47,7 @@ var re_weburl = new RegExp(
 
 export default function EditorToolbarConfig(props) {
 
-      var _code_languages = props.codeLanguages || ["plain", "c", "cs", "cpp", "html", "xml", "css", "javascript", "python", "sql", "php", "perl", "ruby", "markdown", "auto"];
-
+      var _code_languages = props.languages;
       return {
             language: 'en',
             tabSpaces: 4,
@@ -115,6 +114,13 @@ export default function EditorToolbarConfig(props) {
                         { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' },
                   ]
             },
+            fontFamily: {
+                  supportAllValues: true
+            },
+            fontSize: {
+                  options: [10, 12, 14, 'default', 18, 20, 22, 30],
+                  supportAllValues: true
+            },
             image: {
                   toolbar: [
                         'imageStyle:inline',
@@ -180,7 +186,8 @@ export default function EditorToolbarConfig(props) {
                         'tableRow',
                         'mergeTableCells',
                         'tableCellProperties',
-                        'tableProperties'
+                        'tableProperties',
+                        'toggleTableCaption'
                   ]
             },
             mediaEmbed: {
@@ -206,7 +213,8 @@ export default function EditorToolbarConfig(props) {
                                     );
                               }
                         },
-                  ]
+                  ],
+                  previewsInData: true
             },
             codeBlock: {
                   languages: _code_languages.map(_language => {

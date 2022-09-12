@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 
-import { Editor as BuiltEditor, Render as BuiltRender } from "../../";
+import { Editor as BuiltEditor, Render as BuiltRender } from "../../dist/index";
 import './globalstyle.css'
 import { Render, Editor } from "../components";
 
@@ -44,7 +44,9 @@ story.add('Read Only', () => {
             /> */}
             <Render
                 // darkMode
-                data={data}
+                data={`<h1>HELLO WORLD</h1><pre><code class="language-javascript">console.log("Hello World");
+
+console.log("Hello World");</code></pre><p>&nbsp;</p><p>Hello World</p>`}
             />
         </>
     )
@@ -53,17 +55,17 @@ story.add('Read Only', () => {
 story.add('built', () => {
     return (
         <>
-            <BuiltEditor
+            {/* <BuiltEditor
                 darkMode
                 uploadUrl="https://33333.cke-cs.com/easyimage/upload/"
                 uploadAuthorization="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2IiwiYXV0aCI6eyJjb2xsYWJvcmF0aW9uIjp7IioiOnsicm9sZSI6IndyaXRlciJ9fSwiY2tib3giOnsicm9sZSI6ImFkbWluIn19LCJ1c2VyIjp7ImlkIjoiNiIsIm5hbWUiOiJGYWlybGllIFNlcnJpZXIiLCJlbWFpbCI6Imh1ZmVmYW5pQHdhZC5scyJ9LCJpc0RldlRva2VuIjp0cnVlLCJ0aW1lc3RhbXAiOjE2NjI2MDY5ODA3OTIsInNpZ25hdHVyZSI6ImQwNDQxODU3MDg4OGQ0YjAzYWFlZjVkY2M4OTFmNDAwYWU0MGViMzdlOWY0ZjgzZjQxMGUwNTIzZTI5M2NmODMiLCJleHAiOjE2NjI2MTA1ODAsImF1ZCI6InJjMURGdUZwSHFjUjNNYWg2eTBlIiwianRpIjoiZFRpNDNCdW9VMEpZQ1NBVllfb2k4MEtrZ3UyMzRMd3QiLCJpYXQiOjE2NjI2MDY5ODB9.q3g_grSEWgGyWGn4dElD_-ph9pgCCxchucem-vWjJPw"
-            />
+            /> */}
 
             <BuiltRender
                 darkMode
-                data={`<h1>HELLO WORLD</h1><span lang="javascript" dir="undefined"><pre><code class="language-javascript">console.log("Hello World");
+                data={`<h1>HELLO WORLD</h1><pre><code class="language-javascript">console.log("Hello World");
 
-console.log("Hello World");</code></pre></span><p>&nbsp;</p><p>Hello World</p>`}
+console.log("Hello World");</code></pre><p>&nbsp;</p><p>Hello World</p>`}
             />
         </>
     )

@@ -117,6 +117,10 @@ export const darkStyle = `
 .ck-button.ck-disabled {
     cursor: default !important;
 }
+.ck.ck-button.ck-on, a.ck.ck-button.ck-on {
+    color: #70ffe9 !important;
+    background-color: hsl(270deg 1% 22%) !important;
+}
 .ck.ck-list__item .ck-button:hover:not(.ck-disabled) {
     background-color: var(--ck-color-button-default-hover-background) !important
 }
@@ -149,6 +153,9 @@ export const lightStyle = `
 .ck-button.ck-disabled {
     cursor: default !important;
 }
+.ck.ck-button.ck-on, a.ck.ck-button.ck-on {
+    color: #70ffe9 !important;
+}
 .ck.ck-list__item .ck-button:hover:not(.ck-disabled) {
     background-color: var(--ck-color-button-default-hover-background) !important
 }
@@ -163,95 +170,118 @@ export const editorDefaultStyles = `
 ::selection {
     background: #00ffd78f !important;
 }
+.ck.ck-button:active, .ck.ck-button:focus, a.ck.ck-button:active, a.ck.ck-button:focus {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
 .editor {
-    background-color: var(--ck-custom-background);
-    color: var(--ck-custom-white);
-    font-family: system-ui;
+    background-color: var(--ck-custom-background) !important;
+    color: var(--ck-custom-white) !important;
+    font-family: system-ui !important;
 }
 .editor h2, .editor h3, .editor h4 {
-    line-height: 2;
+    line-height: 2 !important;
 }
 .editor ul, .editor ol {
-    margin-left: 30px;
+    margin-left: 30px !important;
 }
 .editor ul li, .editor ol li {
-    line-height: 1.3;
-    font-size: 14px;
-    font-weight: 500;
+    line-height: 1.3 !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
 }
 .editor p {
-    line-height: 1.3;
-    font-size: 14px;
-    font-weight: 500;
+    line-height: 1.3 !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
 }
 .editor a {
-    color: #58a6ff;
-    text-decoration: none;
+    color: #58a6ff !important;
+    text-decoration: none !important;
 }
 .editor a:hover {
-    text-decoration: underline;
+    text-decoration: underline !important;
 }
-.editor .image &gt;
-figcaption {
-    padding: 0.2em;
+.editor .image img {
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 0px #000;
+    border-radius: 10px;
+}
+.editor .image:has(figcaption) img {
+    border-radius: 10px 10px 0 0;
+}
+.editor .image > figcaption {
+    padding: 0.5em !important;
+    box-shadow: 0px 0px 10px 0px #000;
+    border-radius: 0 0 10px 10px;
 }
 .editor span[lang] {
-    margin: 4px;
-    display: flow-root;
-    border-radius: 8px;
-    position: relative;
-    background-color: hsl(255, 3%, 18%);
-    color: hsl(0, 0%, 100%);
+    margin: 4px !important;
+    display: flow-root !important;
+    border-radius: 8px !important;
+    position: relative !important;
 }
-.editor span[lang] pre {
-    width: auto;
-    overflow: auto;
-    white-space: nowrap;
-    border-radius: 8px;
-    padding-top: 20px;
-    border: none;
-    background-color: transparent;
-    color: var(--ck-custom-white);
+.editor pre {
+    width: auto !important;
+    overflow: auto !important;
+    white-space: nowrap !important;
+    border-radius: 8px !important;
+    padding-top: 20px !important;
+    border: none !important;
+    background-color: hsl(255, 3%, 18%) !important;
+    color: hsl(0, 0%, 100%) !important;
 }
-.editor span[lang] pre::after {
-    display: none;
+.editor pre code {
+    white-space: pre !important;
 }
-.editor span[lang] pre code {
-    white-space: pre;
-}
-.editor span[lang]::after {
-    content: attr(lang);
-    position: absolute;
-    top: 1px;
-    left: 10px;
-    padding: 1.8px 4.8px;
-    line-height: 12px;
-    border-radius: 5px;
-    font-family: -helvetica, -arial, -tahoma, -verdana, sans-serif;
-    font-size: 11px;
-    white-space: nowrap;
-    text-decoration: none;
-    text-transform: uppercase;
+.editor pre::after {
+    content: attr(data-language) !important;
+    position: absolute !important;
+    top: 1px !important;
+    left: 10px !important;
+    right: auto !important;
+    padding: 1.8px 4.8px !important;
+    line-height: 12px !important;
+    border-radius: 5px !important;
+    font-family: -helvetica, -arial, -tahoma, -verdana, sans-serif !important;
+    font-size: 11px !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
 }
 .editor .mention {
-    background-color: transparent;
-    position: relative;
+    background-color: transparent !important;
+    position: relative !important;
 }
 .editor .mention:hover::after {
-    content: attr(data-user-email);
-    position: absolute;
-    top: calc(100% + 7px);
-    left: 0;
-    padding: 5px;
-    z-index: 9999;
-    border-radius: 5px;
+    content: attr(data-user-email) !important;
+    position: absolute !important;
+    top: calc(100% + 7px) !important;
+    left: 0 !important;
+    padding: 5px !important;
+    z-index: 9999 !important;
+    border-radius: 5px !important;
 }
-.editor .ck-widget.media {
-    max-width: 600px;
-    margin: 0 auto;
+.editor .media {
+    max-width: 600px !important;
+    margin: 0 auto !important;
 }
 .ck.ck-editor__editable.ck-focused:not(.ck-editor__nested-editable) {
-    border: 1px solid transparent;
-    box-shadow: none;
+    border: 1px solid transparent !important;
+    box-shadow: none !important;
+}
+.copy-to-clipboard-button {
+    padding: 5px 10px !important;
+    cursor: pointer;
+}
+.code-toolbar {
+    display: grid;
+}
+.ck.ck-editor__editable_inline>:first-child {
+    margin-top: 0px !important;
+}
+.ck.ck-editor__editable_inline>:last-child {
+    margin-bottom: 0px !important;
 }
 `;

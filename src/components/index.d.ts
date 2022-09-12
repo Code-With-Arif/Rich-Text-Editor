@@ -1,6 +1,7 @@
 import React from "react";
 
 interface Props {
+    className: String;
     darkMode: Boolean;
     styles: React.CSSProperties;
     toolbarStyles: React.CSSProperties;
@@ -37,6 +38,7 @@ interface Props {
 export declare function Editor(props: Props): JSX.Element;
 
 export declare function Render(props: {
+    className: String;
     darkMode: Boolean;
     styles: React.CSSProperties;
     editorStyles: React.CSSProperties;
