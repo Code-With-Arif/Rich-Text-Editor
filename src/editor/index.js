@@ -1,17 +1,20 @@
 import React from 'react'
-import EditorConfig from "./editor-toolbar.config";
-import MyUploadAdapter from './uploadAdapter';
-import { darkStyle, lightStyle, editorDefaultStyles } from './style';
+
+import CKEditor from 'ckeditor5-custom-build/build/ckeditor';
+import EditorConfig from "./utils/editor-toolbar.config";
+import MyUploadAdapter from './utils/uploadAdapter';
+
+import { darkStyle, lightStyle, editorDefaultStyles } from './css/style';
+import "./css/prism.css";
+import "./css/style.css";
+
 import Prism from "prismjs";
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 import "prismjs/plugins/toolbar/prism-toolbar.min.css";
 import "prismjs/plugins/toolbar/prism-toolbar.min";
 import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min";
-import "./prism.css";
-import "./style.css";
 import "prismjs/components/prism-markup-templating";
-
 import prismComponents from "prismjs/components";
 
 const languages = [ "plane", ...Object.keys(prismComponents.languages).filter(e => ![
@@ -26,7 +29,7 @@ Object.keys(prismComponents.languages).forEach(e => {
             "django"
         ].includes(e)) return;
         require("prismjs/components/prism-"+e);
-    } catch (err) {console.log(err);}
+    } catch (err) {console.log(err.message);}
 });
 
 export function Editor(props) {
@@ -85,7 +88,8 @@ export function Editor(props) {
     }
 
     React.useEffect(() => {
-        const CKEditor = require('./ckeditor');
+        // const CKEditor = require('./ckeditor');
+        // console.log(CKEditor);
         const editorElem = editorRef.current;
 
         const editorConfig = EditorConfig({ ...props, languages: (props.codeLanguages || languages)});
